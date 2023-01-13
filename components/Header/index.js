@@ -1,9 +1,9 @@
-import React from "react";
+import { StyledHeader } from "./Header.styled";
 
 export default function Header() {
   return (
-    <nav>
+    <StyledHeader>
       <h1>Tourio</h1>
-    </nav>
+    </StyledHeader>
   );
 }
