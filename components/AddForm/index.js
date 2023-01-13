@@ -1,5 +1,7 @@
 //import useSWR from "swr";
 
+import { StyledForm, StyledLabel } from "./AddForm.styled";
+
 export default function AddForm() {
   //const products = useSWR("/api/products");
 
@@ -28,25 +30,25 @@ export default function AddForm() {
 
   return (
     //<Link href="BACK TO HOMEPAGE"></Link>
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <h1>Add Place</h1>
-      <label htmlFor="name">
+      <StyledLabel htmlFor="name">
         Name:
         <input type="text" id="name" name="name" />
-      </label>
-      <label htmlFor="image">
+      </StyledLabel>
+      <StyledLabel htmlFor="image">
         Image Url:
         <input type="text" id="image" name="image" />
-      </label>
-      <label htmlFor="location">
+      </StyledLabel>
+      <StyledLabel htmlFor="location">
         Location:
         <input type="text" id="location" name="location" />
-      </label>
-      <label htmlFor="description">
+      </StyledLabel>
+      <StyledLabel htmlFor="description">
         Description:
         <textarea id="description" name="description"></textarea>
-      </label>
+      </StyledLabel>
       <button type="submit">Add</button>
-    </form>
+    </StyledForm>
   );
 }
