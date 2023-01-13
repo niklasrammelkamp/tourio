@@ -1,8 +1,8 @@
 //import useSWR from "swr";
-
-import { StyledForm, StyledLabel } from "./AddForm.styled";
+import { useRouter } from "next/router";
 
 export default function AddForm() {
+  const router = useRouter();
   //const products = useSWR("/api/products");
 
   async function handleSubmit(event) {
@@ -29,26 +29,34 @@ export default function AddForm() {
   }
 
   return (
-    //<Link href="BACK TO HOMEPAGE"></Link>
-    <StyledForm onSubmit={handleSubmit}>
-      <h1>Add Place</h1>
-      <StyledLabel htmlFor="name">
-        Name:
-        <input type="text" id="name" name="name" />
-      </StyledLabel>
-      <StyledLabel htmlFor="image">
-        Image Url:
-        <input type="text" id="image" name="image" />
-      </StyledLabel>
-      <StyledLabel htmlFor="location">
-        Location:
-        <input type="text" id="location" name="location" />
-      </StyledLabel>
-      <StyledLabel htmlFor="description">
-        Description:
-        <textarea id="description" name="description"></textarea>
-      </StyledLabel>
-      <button type="submit">Add</button>
-    </StyledForm>
+    <>
+      <button
+        onClick={() => {
+          router.push("/");
+        }}
+      >
+        Go Back
+      </button>
+      <form onSubmit={handleSubmit}>
+        <h1>Add Place</h1>
+        <label htmlFor="name">
+          Name:
+          <input type="text" id="name" name="name" />
+        </label>
+        <label htmlFor="image">
+          Image Url:
+          <input type="text" id="image" name="image" />
+        </label>
+        <label htmlFor="location">
+          Location:
+          <input type="text" id="location" name="location" />
+        </label>
+        <label htmlFor="description">
+          Description:
+          <textarea id="description" name="description"></textarea>
+        </label>
+        <button type="submit">Add</button>
+      </form>
+    </>
   );
 }

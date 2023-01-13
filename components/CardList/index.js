@@ -1,10 +1,9 @@
 import Card from "../Card";
 import useSWR from "swr";
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
+import Link from "next/link";
 
 export default function CardList() {
-  const { data } = useSWR("/api/places", fetcher);
+  const { data } = useSWR("/api/places");
   if (!data) {
     return <p>is Loading</p>;
   }
@@ -14,7 +13,11 @@ export default function CardList() {
       <p>card list</p>
       <ul>
         {data.map((place) => {
-          return <Card place={place} key={data.id} />;
+          return (
+            <Link href={`/${place._id}`} key={place.id}>
+              <Card place={place} />
+            </Link>
+          );
         })}
       </ul>
     </>
