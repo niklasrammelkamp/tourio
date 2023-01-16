@@ -9,23 +9,24 @@ export default function AddForm() {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const productData = Object.fromEntries(formData);
+    const placesData = Object.fromEntries(formData);
+    console.log(placesData);
 
-    // try {
-    //   const response = await fetch("/api/products", {
-    //     method: "POST",
-    //     body: JSON.stringify(productData),
-    //     headers: { "Content-type": "application/json" },
-    //   });
-    //   if (response.ok) {
-    //     products.mutate();
-    //     event.target.reset();
-    //   } else {
-    //     console.error(`Error: ${response.status}`);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      const response = await fetch("/api/places", {
+        method: "POST",
+        body: JSON.stringify(placesData),
+        headers: { "Content-type": "application/json" },
+      });
+      if (response.ok) {
+        // products.mutate();
+        event.target.reset();
+      } else {
+        console.error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -46,6 +47,10 @@ export default function AddForm() {
         <label htmlFor="image">
           Image Url:
           <input type="text" id="image" name="image" />
+        </label>
+        <label htmlFor="mapURL">
+          Map Url:
+          <input type="text" id="mapURL" name="mapURL" />
         </label>
         <label htmlFor="location">
           Location:

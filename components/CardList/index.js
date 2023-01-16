@@ -10,7 +10,6 @@ export default function CardList() {
   console.log("data", data);
   return (
     <>
-      <p>card list</p>
       <ul>
         {data.map((place) => {
           return (
