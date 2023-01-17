@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import GlobalStyle from "../styles";
+import GlobalStyle from "GlobalsStyle";
 import { SWRConfig } from "swr";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
