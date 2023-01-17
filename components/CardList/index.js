@@ -13,7 +13,7 @@ export default function CardList() {
       <ul>
         {data.map((place) => {
           return (
-            <Link href={`/${place._id}`} key={place.id}>
+            <Link href={`/${place._id}`} key={place._id}>
               <Card place={place} />
             </Link>
           );
