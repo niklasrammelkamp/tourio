@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
 import useSWR from "swr";
 import { useState } from "react";
+import AddForm from "@/components/Form";
+import StyledButton from "@/components/StyledButton/Button.styled";
+import StyledImage from "@/components/StyledImage/Image.styled";
 
 export default function PlacesDetailsPage() {
   const [isEdit, setIsEdit] = useState(false);
@@ -50,85 +52,63 @@ export default function PlacesDetailsPage() {
   return (
     <>
       {isEdit ? (
-        <form onSubmit={handleSubmit}>
-          <h1>Edit Place</h1>
-          <label htmlFor="name">
-            Name:
-            <input type="text" id="name" name="name" defaultValue={data.name} />
-          </label>
-          <label htmlFor="image">
-            Image Url:
-            <input
-              type="text"
-              id="image"
-              name="image"
-              defaultValue={data.image}
-            />
-          </label>
-          <label htmlFor="mapURL">
-            Map Url:
-            <input
-              type="text"
-              id="mapURL"
-              name="mapURL"
-              defaultValue={data.mapURL}
-            />
-          </label>
-          <label htmlFor="location">
-            Location:
-            <input
-              type="text"
-              id="location"
-              name="location"
-              defaultValue={data.location}
-            />
-          </label>
-          <label htmlFor="description">
-            Description:
-            <textarea
-              id="description"
-              name="description"
-              defaultValue={data.description}
-            ></textarea>
-          </label>
-          <button type="submit">Update</button>
-        </form>
+        <>
+          <StyledImage
+            src={data.image}
+            alt={data.name}
+            width={300}
+            height={200}
+          />
+          <AddForm onSubmit={handleSubmit} place={data} />
+          <StyledButton
+            onClick={() => {
+              setIsEdit(false);
+            }}
+          >
+            X
+          </StyledButton>
+        </>
       ) : (
         <>
           <h2>{data.name}</h2>
-          <Image src={data.image} alt={data.name} width={300} height={200} />
-          <p>location</p>
-          <p>description</p>
-          <button
+          <StyledImage
+            src={data.image}
+            alt={data.name}
+            width={300}
+            height={200}
+          />
+          <p>Location: {data.location}</p>
+          <p>Description: {data.description}</p>
+          <StyledButton
             onClick={() => {
               router.push("/");
             }}
           >
             Back
-          </button>
-          <button
+          </StyledButton>
+          <StyledButton
             onClick={() => {
               router.push(data.mapURL);
             }}
           >
             Google maps
-          </button>
-          <button
+          </StyledButton>
+          <StyledButton
             onClick={() => {
               handleDelete();
               router.push("/");
             }}
           >
             Delete
-          </button>
-          <button
+          </StyledButton>
+          <StyledButton
             type="button"
             onClick={() => {
               setIsEdit(!isEdit);
             }}
           >
-            edit
-          </button>
+            Edit
+          </StyledButton>
         </>
       )}
     </>

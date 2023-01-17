@@ -1,11 +1,17 @@
-import Image from "next/image";
+import { StyledListItem, StyledListItemHeading } from "./Card.styled";
+import StyledImage from "../StyledImage/Image.styled";
 
 export default function Card({ place }) {
   return (
-    <li>
-      <h2>{place.name}</h2>
-      <Image src={place.image} alt={place.name} width={300} height={100} />
+    <StyledListItem>
+      <StyledListItemHeading>{place.name}</StyledListItemHeading>
+      <StyledImage
+        src={place.image}
+        alt={place.name}
+        width={300}
+        height={300}
+      />
       <p>{place.location}</p>
-    </li>
+    </StyledListItem>
   );
 }

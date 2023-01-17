@@ -1,6 +1,6 @@
 import Card from "../Card";
 import useSWR from "swr";
-import Link from "next/link";
+import { StyledLink, StyledList } from "./CardList.styled";
 
 export default function CardList() {
   const { data } = useSWR("/api/places");
@@ -10,15 +10,15 @@ export default function CardList() {
   console.log("data", data);
   return (
     <>
-      <ul>
+      <StyledList>
         {data.map((place) => {
           return (
-            <Link href={`/${place._id}`} key={place._id}>
+            <StyledLink href={`/${place._id}`} key={place._id}>
               <Card place={place} />
-            </Link>
+            </StyledLink>
           );
         })}
-      </ul>
+      </StyledList>
     </>
   );
 }

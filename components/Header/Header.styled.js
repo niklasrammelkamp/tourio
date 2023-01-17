@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.nav`
-  background: green;
+  width: 100%;
+  background: lightgreen;
   padding: 1rem;
 `;
