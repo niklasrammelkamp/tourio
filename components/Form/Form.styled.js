@@ -14,4 +14,7 @@ export const StyledLabel = styled.label`
   display: flex;
   justify-content: space-between;
   gap: 5px;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 50vw;
 `;
