@@ -7,7 +7,7 @@ export default function CardList() {
   if (!data) {
     return <p>is Loading</p>;
   }
-  console.log("data", data);
+
   return (
     <>
       <StyledList>
